@@ -20,9 +20,9 @@ window.NONNA = {
      Séparez chaque sauce par une virgule, chacune entre guillemets. */
   sauces: [
     "Crème de truffe",
-    "Bolognaise mijotée",
+    "Carbonarra",
     "Pesto di casa",
-    "Quatre fromages",
+    "Siciliana",
     "Arrabbiata"
   ],
 
