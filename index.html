@@ -3,472 +3,213 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nonna Pasta — Trattoria à deux pas des Champs-Élysées | Paris 8e</title>
-<meta name="description" content="Nonna Pasta, 37 rue de Ponthieu 75008 Paris. Cuisine italienne généreuse, pâtes cuites à la minute et sauces changées chaque semaine. Sur place, à emporter, Uber Eats & Deliveroo." />
-<meta name="theme-color" content="#142a52" />
+<title>Nonna Pasta — Bientôt disponible</title>
+<meta name="description" content="Nonna Pasta, trattoria italienne au 37 rue de Ponthieu, 75008 Paris. Notre site arrive bientôt. En attendant, commandez en livraison sur Uber Eats et Deliveroo." />
+<meta name="theme-color" content="#0e1f3d" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-
-<!-- Open Graph -->
-<meta property="og:title" content="Nonna Pasta — Il Sapore della Tradizione" />
-<meta property="og:description" content="Cuisine italienne généreuse à deux pas des Champs-Élysées. Pâtes à la minute, sauces changées chaque semaine." />
-<meta property="og:type" content="restaurant" />
-<meta property="og:image" content="assets/images/hero-lasagne.jpg" />
-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<style>
+  :root{
+    --navy:#002f5c; --navy-deep:#00213f; --cream:#f4e9cf; --gold:#be8f3c; --gold-soft:#ecd6a9;
+    --serif:"Playfair Display",Georgia,serif; --sans:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    min-height:100vh;font-family:var(--sans);color:var(--cream);
+    background:radial-gradient(1200px 700px at 50% -10%,#1d3a6b 0%,var(--navy) 45%,var(--navy-deep) 100%);
+    display:flex;align-items:center;justify-content:center;padding:40px 22px;position:relative;overflow-x:hidden;
+  }
+  /* Rayures crème discrètes (motif de marque) */
+  body::before{
+    content:"";position:absolute;inset:0;z-index:0;opacity:.08;
+    background-image:repeating-linear-gradient(90deg,var(--cream) 0 10px,transparent 10px 60px);
+  }
+  .wrap{position:relative;z-index:1;max-width:660px;width:100%;text-align:center;
+    animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+  .logo{
+    width:min(440px,84vw);margin:0 auto 30px;display:block;
+    filter:drop-shadow(0 16px 34px rgba(0,0,0,.45));
+  }
+
+  .kicker{font-size:.8rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,6vw,3.3rem);line-height:1.1;color:#fff;
+    text-shadow:0 4px 30px rgba(0,0,0,.35)}
+  .dots{display:inline-block;margin-left:2px}
+  .dots span{opacity:0;animation:blink 1.4s infinite}
+  .dots span:nth-child(2){animation-delay:.2s}
+  .dots span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:0}30%{opacity:1}}
+
+  .tagline{font-family:var(--serif);font-style:italic;color:var(--gold-soft);font-size:1.15rem;margin-top:14px}
+  .open-badge{display:inline-flex;align-items:center;gap:9px;margin:22px auto 0;
+    padding:9px 20px;border-radius:999px;background:rgba(120,190,140,.14);
+    border:1px solid rgba(140,205,160,.55);color:#bfe6c8;font-weight:600;font-size:.92rem}
+  .open-badge .dot{width:9px;height:9px;border-radius:50%;background:#5bd07f;
+    box-shadow:0 0 0 0 rgba(91,208,127,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,208,127,.55)}70%{box-shadow:0 0 0 9px rgba(91,208,127,0)}100%{box-shadow:0 0 0 0 rgba(91,208,127,0)}}
+  .lead{margin:22px auto 0;max-width:480px;color:rgba(245,239,224,.85);font-size:1.02rem;line-height:1.7}
+  .lead strong{color:#fff}
+  .lead a{color:var(--gold-soft);text-decoration:underline;text-underline-offset:3px;
+    text-decoration-thickness:1px;transition:color .2s}
+  .lead a:hover{color:#f3e3be}
+
+  .divider{width:60px;height:2px;background:var(--gold);margin:30px auto;border-radius:2px;opacity:.8}
+
+  .week-card{margin:30px auto 0;max-width:520px;width:100%;background:#f5ecd6;
+    border:2px solid #e6d5a8;border-radius:22px;overflow:hidden;
+    box-shadow:0 18px 44px rgba(0,0,0,.34)}
+  .week-photo{height:200px;overflow:hidden;border-bottom:2px solid #e6d5a8}
+  .week-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .week-body{padding:22px 24px 26px}
+  .week-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#b0873a;margin-bottom:6px}
+  .week-title{font-family:var(--serif);color:var(--navy);font-size:1.4rem;line-height:1.15;margin-bottom:8px}
+  .week-current{color:#2a4a70;font-size:1rem}
+  .week-current strong{color:var(--navy)}
+  .week-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+  .week-chip{font-size:.82rem;font-weight:600;color:var(--navy);background:rgba(0,47,92,.06);
+    border:1px solid rgba(0,47,92,.30);padding:6px 14px;border-radius:999px}
+  .week-note{margin-top:16px;font-size:.82rem;color:#5a6a80}
+
+  .gallery-strip{width:100vw;margin-left:calc(50% - 50vw);margin-top:36px}
+  .strip-label{text-align:center;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.72);margin-bottom:16px}
+  .strip-viewport{overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .strip-track{display:flex;width:max-content;padding:4px 0;animation:stripScroll 40s linear infinite}
+  .strip-track:hover{animation-play-state:paused}
+  .strip-item{flex:0 0 auto;width:200px;margin:0 16px 0 0}
+  .strip-item img{width:200px;height:150px;object-fit:cover;border-radius:16px;display:block;
+    box-shadow:0 10px 24px rgba(0,0,0,.34)}
+  .strip-item figcaption{margin-top:9px;font-size:.82rem;color:rgba(245,239,224,.85);text-align:center;line-height:1.3;padding:0 4px}
+  @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+  .order-label{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7);margin-bottom:14px}
+  .social-label{margin-top:32px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7)}
+  .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:999px;
+    font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;border:1.5px solid transparent}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 12px 28px rgba(201,154,78,.4)}
+  .btn-gold:hover{background:var(--gold-soft)}
+  .btn-ghost{background:rgba(245,239,224,.06);color:var(--cream);border-color:rgba(245,239,224,.5)}
+  .btn-ghost:hover{background:rgba(245,239,224,.14)}
+
+  .contact{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;
+    font-size:.92rem;color:rgba(245,239,224,.82)}
+  .contact a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  .contact a:hover{border-color:var(--gold-soft)}
+  .contact span{display:inline-flex;align-items:center;gap:8px}
+
+  .review-cta{display:inline-block;text-align:center;line-height:1.5;margin:26px auto 0;
+    padding:13px 28px;border-radius:22px;text-decoration:none;font-weight:600;font-size:1rem;
+    color:var(--navy-deep);background:var(--gold-soft);
+    box-shadow:0 12px 28px rgba(0,0,0,.28);transition:transform .25s,box-shadow .25s,background .25s}
+  .review-cta:hover{transform:translateY(-2px);background:#f3e3be;box-shadow:0 16px 34px rgba(0,0,0,.34)}
+  .review-cta .stars{letter-spacing:2px;font-size:.95rem;color:#c99a3c;vertical-align:middle;margin-right:6px}
+  .review-cta .tutti{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.08em}
+
+  .foot{margin-top:30px;font-size:.78rem;color:rgba(245,239,224,.5)}
+  @media (max-width:480px){.btn{flex:1 1 100%}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
 </head>
 <body>
+  <main class="wrap">
+    <img class="logo" src="assets/images/logo-transparent.png?v=3" alt="Nonna Pasta" />
 
-<!-- ===== HEADER ===== -->
-<header class="site-header" id="header">
-  <div class="container header-inner">
-    <a href="#top" class="brand" aria-label="Nonna Pasta — accueil">
-      <span class="brand-fork">🍴</span>
-      <span class="brand-text">
-        <span class="brand-name">Nonna Pasta</span>
-        <span class="brand-sub">Il Sapore della Tradizione</span>
-      </span>
+    <p class="kicker">Trattoria italienne · Paris 8ᵉ</p>
+    <h1>Notre site arrive bientôt<span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
+    <p class="tagline">Il Sapore della Tradizione</p>
+
+    <p class="open-badge"><span class="dot"></span> Le restaurant est déjà ouvert — Venite a trovarci&nbsp;!</p>
+
+    <p class="lead">
+      Notre <strong>site web</strong> arrive très bientôt… mais
+      <strong>notre trattoria vous accueille déjà !</strong>
+      Poussez la porte au <strong><a href="https://www.google.com/maps/dir/?api=1&amp;destination=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">37 rue de Ponthieu, 75008 Paris</a></strong>, à deux pas des Champs-Élysées :
+      cuisine généreuse, pâtes cuites <strong>à la minute</strong> et accueil aux petits soins.
+      <br />À très vite en salle ou en livraison !
+    </p>
+
+    <div class="week-card">
+      <div class="week-photo"><img src="assets/images/pates-semaine.jpg" alt="Pâtes fraîches à la sauce de la semaine" /></div>
+      <div class="week-body">
+        <p class="week-eyebrow">Cette semaine à la carte</p>
+        <h3 class="week-title">La sauce de la semaine</h3>
+        <p class="week-current">À l'affiche : <strong id="bSauce">Crème de truffe &amp; parmesan</strong></p>
+        <div class="week-chips" id="bChips">
+          <span class="week-chip">Crème de truffe</span>
+          <span class="week-chip">Bolognaise mijotée</span>
+          <span class="week-chip">Pesto di casa</span>
+          <span class="week-chip">Quatre fromages</span>
+          <span class="week-chip">Arrabbiata</span>
+        </div>
+        <p class="week-note">🔥 Pâtes cuites à la minute · sauce changée chaque semaine</p>
+      </div>
+    </div>
+
+    <section class="gallery-strip" aria-label="Aperçu de nos plats">
+      <p class="strip-label">Un aperçu de nos spécialités</p>
+      <div class="strip-viewport">
+        <div class="strip-track" id="stripTrack"></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <p class="order-label">En attendant, commandez en livraison</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://www.ubereats.com/fr/store/nonna-pasta/fMqXAi5KVVisIOi39nbDfg" target="_blank" rel="noopener">🛵 Uber Eats</a>
+      <a class="btn btn-ghost" href="https://deliveroo.fr/fr/menu/Paris/paris-8eme-faubourg-saint-honore/nonna-pasta-paris-37-rue-de-ponthieu" target="_blank" rel="noopener">🚴 Deliveroo</a>
+    </div>
+
+    <p class="social-label">Suivez-nous sur les réseaux</p>
+    <div class="contact">
+      <span style="color:var(--gold-soft)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg><a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">@nonnapastafr</a></span>
+    </div>
+
+    <!-- Appel à l'avis Google : modifiez la phrase et/ou le lien ici si besoin -->
+    <a class="review-cta" href="https://g.page/r/CQjq_r3sA9J5EBM/review" target="_blank" rel="noopener">
+      <span class="stars">★★★★★</span> Un bon moment chez nous ? Partagez-le <span class="tutti">A&nbsp;tutti&nbsp;!</span>
     </a>
 
-    <nav class="nav" id="nav">
-      <a href="#concept">La maison</a>
-      <a href="#semaine">Sauce de la semaine</a>
-      <a href="#menu">Le menu</a>
-      <a href="#ambiance">Ambiance</a>
-      <a href="#infos">Nous trouver</a>
-      <a href="#commander" class="btn btn-nav">Commander</a>
-    </nav>
+    <p class="foot">© <span id="y"></span> Nonna Pasta — Fatto con amore 💙</p>
+  </main>
+  <script src="config.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      var N = window.NONNA || {};
+      var s = document.getElementById('bSauce');
+      if (s && N.sauceDeLaSemaine) s.textContent = N.sauceDeLaSemaine;
+      var c = document.getElementById('bChips');
+      if (c && Array.isArray(N.sauces)) {
+        c.innerHTML = N.sauces.map(function(x){
+          return '<span class="week-chip">' + String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+        }).join('');
+      }
 
-    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <div class="hero-media">
-    <img src="assets/images/hero-lasagne.jpg" alt="Lasagnes gratinées Nonna Pasta" />
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="container hero-content reveal">
-    <p class="hero-kicker">Trattoria italienne · Paris 8ᵉ</p>
-    <h1 class="hero-title">Une cuisine généreuse,<br />à deux pas des Champs-Élysées</h1>
-    <p class="hero-lead">
-      Des pâtes cuites <strong>à la minute</strong>, des sauces qui changent
-      <strong>chaque semaine</strong> et un accueil aux petits soins.
-      Benvenuti chez Nonna Pasta.
-    </p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn btn-gold">Découvrir le menu</a>
-      <a href="#commander" class="btn btn-ghost">Commander en livraison</a>
-    </div>
-    <div class="hero-badges">
-      <span>🍝 Pâtes fraîches à la minute</span>
-      <span>🔄 Sauces changées chaque semaine</span>
-      <span>📍 37 rue de Ponthieu, 75008</span>
-    </div>
-  </div>
-  <a href="#concept" class="scroll-cue" aria-label="Défiler vers le bas">▾</a>
-</section>
-
-<!-- ===== MARQUEE ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Cuisson à la minute</span><span class="dot">•</span>
-    <span>Sauce de la semaine</span><span class="dot">•</span>
-    <span>Fatto con amore</span><span class="dot">•</span>
-    <span>Produits italiens</span><span class="dot">•</span>
-    <span>Accueil aux petits soins</span><span class="dot">•</span>
-    <span>Il Sapore della Tradizione</span><span class="dot">•</span>
-    <span>Cuisson à la minute</span><span class="dot">•</span>
-    <span>Sauce de la semaine</span><span class="dot">•</span>
-    <span>Fatto con amore</span><span class="dot">•</span>
-    <span>Produits italiens</span><span class="dot">•</span>
-    <span>Accueil aux petits soins</span><span class="dot">•</span>
-    <span>Il Sapore della Tradizione</span><span class="dot">•</span>
-  </div>
-</div>
-
-<!-- ===== CONCEPT ===== -->
-<section class="section concept" id="concept">
-  <div class="container concept-grid">
-    <div class="concept-text reveal">
-      <p class="eyebrow">Notre maison</p>
-      <h2>La générosité italienne au cœur du 8ᵉ</h2>
-      <p>
-        Chez <strong>Nonna Pasta</strong>, on cuisine comme à la maison : de vraies portions,
-        des produits choisis et le geste juste. Nos pâtes sont cuites
-        <strong>à la minute</strong>, jamais à l'avance, pour arriver dans votre assiette
-        parfaitement al dente.
-      </p>
-      <p>
-        Et parce que la tradition aime la surprise, nos <strong>sauces changent chaque
-        semaine</strong> : crème de truffe, bolognaise mijotée, pesto maison… Il y a toujours
-        une raison de revenir. À deux pas des Champs-Élysées, on vous accueille avec le sourire
-        et le sens du détail.
-      </p>
-      <a href="#menu" class="link-arrow">Voir tout le menu →</a>
-    </div>
-    <div class="concept-media reveal">
-      <img src="assets/images/table.jpg" alt="Une tablée généreuse chez Nonna Pasta" loading="lazy" />
-    </div>
-  </div>
-
-  <div class="container features">
-    <article class="feature reveal">
-      <span class="feature-ic">🔥</span>
-      <h3>Cuisson à la minute</h3>
-      <p>Vos pâtes sont préparées à la commande, pour une texture toujours al dente.</p>
-    </article>
-    <article class="feature reveal">
-      <span class="feature-ic">🗓️</span>
-      <h3>Sauce de la semaine</h3>
-      <p>Une carte vivante : nos sauces changent chaque semaine au gré de l'inspiration.</p>
-    </article>
-    <article class="feature reveal">
-      <span class="feature-ic">🛵</span>
-      <h3>Sur place & livré</h3>
-      <p>À déguster en salle, à emporter, ou livré via Uber Eats et Deliveroo.</p>
-    </article>
-    <article class="feature reveal">
-      <span class="feature-ic">💙</span>
-      <h3>Accueil aux petits soins</h3>
-      <p>Une équipe attentionnée pour que chaque visite ait le goût de la dolce vita.</p>
-    </article>
-  </div>
-</section>
-
-<!-- ===== SAUCE DE LA SEMAINE ===== -->
-<section class="section semaine" id="semaine">
-  <div class="container semaine-grid">
-    <div class="semaine-media reveal">
-      <img src="assets/images/pates-semaine.jpg" alt="Pâtes fraîches à la sauce de la semaine" loading="lazy" />
-      <span class="semaine-stamp">Novità<br />ogni settimana</span>
-    </div>
-    <div class="semaine-text reveal">
-      <p class="eyebrow eyebrow-light">Chaque semaine, une nouvelle envie</p>
-      <h2>La sauce de la semaine</h2>
-      <p class="semaine-current">
-        À l'affiche en ce moment :
-        <strong id="sauceName">Crème de truffe &amp; parmesan</strong>
-      </p>
-      <p>
-        On marie la sauce du moment à la pâte de votre choix — penne, fusilli, tortellini —
-        le tout cuit à la minute. Suivez nos nouveautés sur Instagram pour ne rien manquer.
-      </p>
-      <div class="semaine-chips" id="sauceChips">
-        <button class="chip is-active">Crème de truffe</button>
-        <button class="chip">Bolognaise mijotée</button>
-        <button class="chip">Pesto di casa</button>
-        <button class="chip">Quatre fromages</button>
-        <button class="chip">Arrabbiata</button>
-      </div>
-      <a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener" class="link-arrow link-light">
-        Voir la sauce du moment sur Instagram →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MENU ===== -->
-<section class="section menu" id="menu">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">La carte</p>
-      <h2>Nos spécialités</h2>
-      <p class="section-sub">
-        Une sélection de ce que nous préparons en salle. La carte évolue au fil des saisons
-        et des sauces de la semaine.
-      </p>
-    </div>
-
-    <div class="menu-filters reveal" id="menuFilters">
-      <button class="filter is-active" data-cat="all">Tout</button>
-      <button class="filter" data-cat="pates">Pâtes</button>
-      <button class="filter" data-cat="salades">Salades</button>
-      <button class="filter" data-cat="pizza">Pizza &amp; Panini</button>
-      <button class="filter" data-cat="desserts">Desserts</button>
-      <button class="filter" data-cat="boissons">Boissons</button>
-    </div>
-
-    <div class="menu-grid" id="menuGrid">
-
-      <article class="dish reveal" data-cat="pates">
-        <div class="dish-img"><img src="assets/images/tortellini.jpg" alt="Tortellini à la crème de truffe" loading="lazy" /></div>
-        <div class="dish-body">
-          <span class="dish-tag">Signature</span>
-          <h3>Tortellini crème de truffe</h3>
-          <p>Tortellini fondants, sauce crémeuse à la truffe, roquette et copeaux de parmesan.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="pates">
-        <div class="dish-img"><img src="assets/images/pates-semaine.jpg" alt="Fusilli à la sauce crémeuse" loading="lazy" /></div>
-        <div class="dish-body">
-          <span class="dish-tag">Cuisson minute</span>
-          <h3>Pâtes, sauce de la semaine</h3>
-          <p>Penne ou fusilli cuits à la minute, nappés de la sauce crémeuse du moment.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="pates">
-        <div class="dish-img"><img src="assets/images/lasagne.jpg" alt="Lasagnes maison" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Lasagnes de la Nonna</h3>
-          <p>Généreuses, gratinées au parmesan, servies avec une salade de roquette.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="salades">
-        <div class="dish-img"><img src="assets/images/salade-cesar.jpg" alt="Salade César au poulet et avocat" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Salade César & avocat</h3>
-          <p>Poulet rôti, avocat, croûtons dorés, tomates cerises et parmesan.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="salades">
-        <div class="dish-img"><img src="assets/images/salade-prosciutto.jpg" alt="Salade prosciutto et melon" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Prosciutto & melon</h3>
-          <p>Jambon cru, melon, billes de mozzarella au pesto et jeunes pousses.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="salades">
-        <div class="dish-img"><img src="assets/images/caprese-pesto.jpg" alt="Mozzarella au pesto façon caprese" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Mozzarella al pesto</h3>
-          <p>Billes de mozzarella nappées de pesto, salade croquante et tomates du marché.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="pizza">
-        <div class="dish-img"><img src="assets/images/pizza.jpg" alt="Pizza fine dinde et champignons" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Pizza dinde & champignons</h3>
-          <p>Pâte fine, mozzarella, dinde, champignons frais et roquette.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="pizza">
-        <div class="dish-img"><img src="assets/images/panini.jpg" alt="Panini italien grillé" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Panini italiano</h3>
-          <p>Pain grillé, charcuterie italienne, mozzarella fondante et pesto.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="desserts">
-        <div class="dish-img"><img src="assets/images/dessert-choco.jpg" alt="Feuilleté au chocolat" loading="lazy" /></div>
-        <div class="dish-body">
-          <span class="dish-tag">Dolci</span>
-          <h3>Feuilleté au chocolat</h3>
-          <p>Pâte feuilletée croustillante et cœur généreux au chocolat.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="desserts">
-        <div class="dish-img"><img src="assets/images/dessert-framboise.jpg" alt="Verrine à la framboise" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Verrine framboise</h3>
-          <p>Crème onctueuse et miroir de framboise, tout en fraîcheur.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="desserts">
-        <div class="dish-img"><img src="assets/images/salade-fruits.jpg" alt="Salade de fruits frais" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Salade de fruits frais</h3>
-          <p>Fruits de saison taillés à la main et pointe de menthe.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="boissons">
-        <div class="dish-img"><img src="assets/images/boisson-bona.jpg" alt="Bona Mandarinata, soda sicilien" loading="lazy" /></div>
-        <div class="dish-body">
-          <span class="dish-tag">Sicilia</span>
-          <h3>Bona Mandarinata</h3>
-          <p>Le soda sicilien à la mandarine, recette originale depuis 1947.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="boissons">
-        <div class="dish-img"><img src="assets/images/boisson-zuegg.jpg" alt="Nectar Zuegg à la fraise" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Zuegg Fragola</h3>
-          <p>Nectar de fraise méditerranéenne, doux et fruité.</p>
-        </div>
-      </article>
-
-      <article class="dish reveal" data-cat="boissons">
-        <div class="dish-img"><img src="assets/images/boisson-lipton.jpg" alt="Lipton Ice Tea framboise" loading="lazy" /></div>
-        <div class="dish-body">
-          <h3>Ice Tea framboise</h3>
-          <p>Thé glacé rafraîchissant, saveur framboise.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="menu-note reveal">
-      🍴 Photos non contractuelles — la carte complète et les prix sont disponibles en salle
-      et sur nos plateformes de livraison.
-    </p>
-  </div>
-</section>
-
-<!-- ===== AMBIANCE ===== -->
-<section class="section ambiance" id="ambiance">
-  <div class="container section-head reveal">
-    <p class="eyebrow">L'atmosphère</p>
-    <h2>Un coin d'Italie à Paris</h2>
-    <p class="section-sub">Banquettes bleu nuit, rayures crème et clins d'œil à la dolce vita : une parenthèse chaleureuse tout près des Champs-Élysées.</p>
-  </div>
-  <div class="container gallery">
-    <figure class="g-item g-tall reveal"><img src="assets/images/interieur-1.jpg?r=2" alt="Décoration intérieure de Nonna Pasta" loading="lazy" /></figure>
-    <figure class="g-item reveal"><img src="assets/images/panini.jpg" alt="Panini servi en salle" loading="lazy" /></figure>
-    <figure class="g-item reveal"><img src="assets/images/tortellini.jpg" alt="Assiette de tortellini" loading="lazy" /></figure>
-    <figure class="g-item g-tall reveal"><img src="assets/images/interieur-2.jpg?r=2" alt="Ambiance vintage à l'italienne" loading="lazy" /></figure>
-    <figure class="g-item reveal"><img src="assets/images/pizza.jpg" alt="Pizza fine maison" loading="lazy" /></figure>
-    <figure class="g-item reveal"><img src="assets/images/dessert-choco.jpg" alt="Dessert au chocolat" loading="lazy" /></figure>
-  </div>
-</section>
-
-<!-- ===== COMMANDER ===== -->
-<section class="section commander" id="commander">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow eyebrow-light">On se régale ?</p>
-      <h2>Commander &amp; nous rejoindre</h2>
-      <p class="section-sub section-sub-light">Sur place, à emporter ou en livraison à domicile.</p>
-    </div>
-    <div class="order-cards">
-      <a class="order-card order-card-feature reveal" id="ccCard" href="#commander">
-        <span class="order-badge" id="ccBadge">Bientôt</span>
-        <span class="order-ic">🥡</span>
-        <h3>Click &amp; Collect</h3>
-        <p id="ccText">Bientôt disponible : commandez en ligne et retirez en boutique.</p>
-        <span class="order-go" id="ccGo">Commander &amp; retirer →</span>
-      </a>
-      <a class="order-card reveal" href="https://www.ubereats.com/fr/store/nonna-pasta/fMqXAi5KVVisIOi39nbDfg" target="_blank" rel="noopener">
-        <span class="order-ic">🛵</span>
-        <h3>Uber Eats</h3>
-        <p>Livraison rapide à domicile ou au bureau.</p>
-        <span class="order-go">Commander →</span>
-      </a>
-      <a class="order-card reveal" href="https://deliveroo.fr/fr/menu/Paris/paris-8eme-faubourg-saint-honore/nonna-pasta-paris-37-rue-de-ponthieu" target="_blank" rel="noopener">
-        <span class="order-ic">🚴</span>
-        <h3>Deliveroo</h3>
-        <p>Vos plats préférés livrés en un clic.</p>
-        <span class="order-go">Commander →</span>
-      </a>
-      <a class="order-card reveal" href="#infos">
-        <span class="order-ic">🍽️</span>
-        <h3>Sur place</h3>
-        <p>37 rue de Ponthieu, 75008 Paris. À emporter également.</p>
-        <span class="order-go">Nous trouver →</span>
-      </a>
-    </div>
-    <p class="order-note reveal">Livraison assurée sur le secteur des Champs-Élysées et alentours. Vérifiez la disponibilité à votre adresse directement sur Uber Eats ou Deliveroo.</p>
-  </div>
-</section>
-
-<!-- ===== INFOS ===== -->
-<section class="section infos" id="infos">
-  <div class="container infos-grid">
-    <div class="infos-text reveal">
-      <p class="eyebrow">Nous trouver</p>
-      <h2>Bienvenue au 37 rue de Ponthieu</h2>
-
-      <ul class="info-list">
-        <li>
-          <span class="info-ic">📍</span>
-          <div>
-            <strong>Adresse</strong>
-            <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">37 rue de Ponthieu, 75008 Paris</a><br />À deux pas des Champs-Élysées (M° Franklin D. Roosevelt / Saint-Philippe-du-Roule)</p>
-          </div>
-        </li>
-        <li>
-          <span class="info-ic">🕑</span>
-          <div>
-            <strong>Horaires</strong>
-            <p>
-              Lundi – Vendredi : 10h30 – 21h00<br />
-              Samedi : 11h00 – 21h00<br />
-              Dimanche : 11h00 – 18h00
-            </p>
-          </div>
-        </li>
-        <li>
-          <span class="info-ic">📸</span>
-          <div>
-            <strong>Instagram</strong>
-            <p><a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">@nonnapastafr</a> — nouveautés et sauce de la semaine</p>
-          </div>
-        </li>
-        <li>
-          <span class="info-ic">⭐</span>
-          <div>
-            <strong>Votre avis</strong>
-            <!-- LIEN AVIS GOOGLE : remplacez l'adresse ci-dessous par votre lien d'avis (Profil Google -> "Demandez des avis" -> https://g.page/r/XXXX/review) -->
-            <p><a href="https://g.page/r/CQjq_r3sA9J5EBM/review" target="_blank" rel="noopener">Laissez-nous un avis sur Google</a> — merci de votre visite&nbsp;!</p>
-          </div>
-        </li>
-      </ul>
-
-      <div class="infos-actions">
-        <a class="btn btn-navy" href="https://www.google.com/maps/dir/?api=1&destination=37+rue+de+Ponthieu+75008+Paris" target="_blank" rel="noopener">Itinéraire</a>
-        <a class="btn btn-gold" href="https://g.page/r/CQjq_r3sA9J5EBM/review" target="_blank" rel="noopener">Laisser un avis</a>
-        <a class="btn btn-outline" href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">Suivre sur Instagram</a>
-      </div>
-    </div>
-
-    <div class="infos-map reveal">
-      <iframe
-        title="Carte — Nonna Pasta, 37 rue de Ponthieu, 75008 Paris"
-        src="https://maps.google.com/maps?q=37%20rue%20de%20Ponthieu%2075008%20Paris&t=&z=16&ie=UTF8&iwloc=&output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="brand-name">Nonna Pasta</span>
-      <span class="brand-sub">Il Sapore della Tradizione</span>
-      <p class="footer-addr">37 rue de Ponthieu, 75008 Paris</p>
-    </div>
-    <nav class="footer-nav">
-      <a href="#concept">La maison</a>
-      <a href="#menu">Le menu</a>
-      <a href="#ambiance">Ambiance</a>
-      <a href="#commander">Commander</a>
-      <a href="#infos">Nous trouver</a>
-    </nav>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener" aria-label="Instagram">Instagram ↗</a>
-      <a href="https://www.ubereats.com/fr/store/nonna-pasta/fMqXAi5KVVisIOi39nbDfg" target="_blank" rel="noopener">Uber Eats ↗</a>
-      <a href="https://deliveroo.fr/fr/menu/Paris/paris-8eme-faubourg-saint-honore/nonna-pasta-paris-37-rue-de-ponthieu" target="_blank" rel="noopener">Deliveroo ↗</a>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>© <span id="year"></span> Nonna Pasta · Paris 8ᵉ — Fatto con amore 💙</p>
-    <p class="footer-cred">Cuisine généreuse · Pâtes à la minute · Sauces changées chaque semaine</p>
-  </div>
-</footer>
-
-<!-- Bouton flottant Click & Collect (affiché uniquement quand la fonction est active) -->
-<a class="cc-float" id="ccFloat" href="#" target="_blank" rel="noopener" hidden>
-  <span class="cc-float-ic">🥡</span> Click &amp; Collect
-</a>
-
-<script src="config.js"></script>
-<script src="script.js"></script>
+      // Bandeau photos defilant (plats, hors boissons) genere depuis le menu
+      function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+      var track = document.getElementById('stripTrack');
+      if (track && Array.isArray(N.menu)) {
+        var plats = N.menu.filter(function(d){
+          return d.categorie !== 'boissons' && String(d.image).indexOf('pates-semaine') === -1;
+        });
+        var html = plats.map(function(d){
+          return '<figure class="strip-item"><img src="assets/images/' + esc(d.image) +
+                 '" alt="' + esc(d.nom) + '"><figcaption>' + esc(d.nom) + '</figcaption></figure>';
+        }).join('');
+        track.innerHTML = html + html; // duplique pour une boucle continue
+        var half = track.scrollWidth / 2;
+        if (half > 0) track.style.animationDuration = Math.max(22, Math.round(half / 55)) + 's';
+      }
+    })();
+  </script>
 </body>
 </html>
