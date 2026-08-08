@@ -53,6 +53,9 @@
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,208,127,.55)}70%{box-shadow:0 0 0 9px rgba(91,208,127,0)}100%{box-shadow:0 0 0 0 rgba(91,208,127,0)}}
   .lead{margin:22px auto 0;max-width:480px;color:rgba(245,239,224,.85);font-size:1.02rem;line-height:1.7}
   .lead strong{color:#fff}
+  .lead a{color:var(--gold-soft);text-decoration:underline;text-underline-offset:3px;
+    text-decoration-thickness:1px;transition:color .2s}
+  .lead a:hover{color:#f3e3be}
 
   .divider{width:60px;height:2px;background:var(--gold);margin:30px auto;border-radius:2px;opacity:.8}
 
@@ -98,7 +101,7 @@
     <p class="lead">
       Notre <strong>site web</strong> arrive très bientôt… mais
       <strong>notre trattoria vous accueille déjà !</strong>
-      Poussez la porte au <strong>37 rue de Ponthieu, 75008 Paris</strong>, à deux pas des Champs-Élysées :
+      Poussez la porte au <strong><a href="https://www.google.com/maps/dir/?api=1&amp;destination=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">37 rue de Ponthieu, 75008 Paris</a></strong>, à deux pas des Champs-Élysées :
       cuisine généreuse, pâtes cuites <strong>à la minute</strong> et accueil aux petits soins.
       <br />À très vite en salle ou en livraison !
     </p>
