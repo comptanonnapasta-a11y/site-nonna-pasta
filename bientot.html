@@ -61,7 +61,7 @@
 
   .order-label{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7);margin-bottom:14px}
   .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:999px;
     font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;border:1.5px solid transparent}
   .btn:hover{transform:translateY(-2px)}
   .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 12px 28px rgba(201,154,78,.4)}
@@ -75,12 +75,12 @@
   .contact a:hover{border-color:var(--gold-soft)}
   .contact span{display:inline-flex;align-items:center;gap:8px}
 
-  .review-cta{display:inline-flex;align-items:center;gap:11px;margin:26px auto 0;
-    padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:600;font-size:1rem;
+  .review-cta{display:inline-block;text-align:center;line-height:1.5;margin:26px auto 0;
+    padding:13px 28px;border-radius:22px;text-decoration:none;font-weight:600;font-size:1rem;
     color:var(--navy-deep);background:var(--gold-soft);
     box-shadow:0 12px 28px rgba(0,0,0,.28);transition:transform .25s,box-shadow .25s,background .25s}
   .review-cta:hover{transform:translateY(-2px);background:#f3e3be;box-shadow:0 16px 34px rgba(0,0,0,.34)}
-  .review-cta .stars{letter-spacing:2px;font-size:.95rem;color:#c99a3c}
+  .review-cta .stars{letter-spacing:2px;font-size:.95rem;color:#c99a3c;vertical-align:middle;margin-right:6px}
   .review-cta .tutti{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.08em}
 
   .foot{margin-top:30px;font-size:.78rem;color:rgba(245,239,224,.5)}
@@ -115,8 +115,7 @@
     </div>
 
     <div class="contact">
-      <span>📍 <a href="https://www.google.com/maps/dir/?api=1&amp;destination=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">37 rue de Ponthieu, 75008 Paris</a></span>
-      <span>📸 <a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">@nonnapastafr</a></span>
+      <span style="color:var(--gold-soft)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg><a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">@nonnapastafr</a></span>
     </div>
 
     <!-- Appel à l'avis Google : modifiez la phrase et/ou le lien ici si besoin -->
