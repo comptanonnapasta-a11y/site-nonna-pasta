@@ -48,7 +48,6 @@
   .open-badge{display:inline-flex;align-items:center;gap:9px;margin:22px auto 0;
     padding:9px 20px;border-radius:999px;background:rgba(120,190,140,.14);
     border:1px solid rgba(140,205,160,.55);color:#bfe6c8;font-weight:600;font-size:.92rem}
-  .open-badge .it{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.06em}
   .open-badge .dot{width:9px;height:9px;border-radius:50%;background:#5bd07f;
     box-shadow:0 0 0 0 rgba(91,208,127,.6);animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(91,208,127,.55)}70%{box-shadow:0 0 0 9px rgba(91,208,127,0)}100%{box-shadow:0 0 0 0 rgba(91,208,127,0)}}
@@ -59,6 +58,21 @@
   .lead a:hover{color:#f3e3be}
 
   .divider{width:60px;height:2px;background:var(--gold);margin:30px auto;border-radius:2px;opacity:.8}
+
+  .week-card{margin:30px auto 0;max-width:520px;width:100%;background:rgba(245,239,224,.06);
+    border:1px solid rgba(236,214,169,.30);border-radius:22px;overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.30)}
+  .week-photo{height:200px;overflow:hidden}
+  .week-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .week-body{padding:22px 24px 26px}
+  .week-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px}
+  .week-title{font-family:var(--serif);color:#fff;font-size:1.4rem;line-height:1.15;margin-bottom:8px}
+  .week-current{color:rgba(245,239,224,.85);font-size:1rem}
+  .week-current strong{color:var(--gold-soft)}
+  .week-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+  .week-chip{font-size:.82rem;font-weight:500;color:var(--cream);background:rgba(245,239,224,.08);
+    border:1px solid rgba(245,239,224,.25);padding:6px 14px;border-radius:999px}
+  .week-note{margin-top:16px;font-size:.82rem;color:rgba(245,239,224,.62)}
 
   .order-label{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7);margin-bottom:14px}
   .social-label{margin-top:32px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7)}
@@ -98,7 +112,7 @@
     <h1>Notre site arrive bientôt<span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
     <p class="tagline">Il Sapore della Tradizione</p>
 
-    <p class="open-badge"><span class="dot"></span> Le restaurant est déjà ouvert — <span class="it">Venite a trovarci&nbsp;!</span></p>
+    <p class="open-badge"><span class="dot"></span> Le restaurant est déjà ouvert — Venite a trovarci&nbsp;!</p>
 
     <p class="lead">
       Notre <strong>site web</strong> arrive très bientôt… mais
@@ -107,6 +121,23 @@
       cuisine généreuse, pâtes cuites <strong>à la minute</strong> et accueil aux petits soins.
       <br />À très vite en salle ou en livraison !
     </p>
+
+    <div class="week-card">
+      <div class="week-photo"><img src="assets/images/pates-semaine.jpg" alt="Pâtes fraîches à la sauce de la semaine" /></div>
+      <div class="week-body">
+        <p class="week-eyebrow">Cette semaine à la carte</p>
+        <h3 class="week-title">La sauce de la semaine</h3>
+        <p class="week-current">À l'affiche : <strong id="bSauce">Crème de truffe &amp; parmesan</strong></p>
+        <div class="week-chips" id="bChips">
+          <span class="week-chip">Crème de truffe</span>
+          <span class="week-chip">Bolognaise mijotée</span>
+          <span class="week-chip">Pesto di casa</span>
+          <span class="week-chip">Quatre fromages</span>
+          <span class="week-chip">Arrabbiata</span>
+        </div>
+        <p class="week-note">🔥 Pâtes cuites à la minute · sauce changée chaque semaine</p>
+      </div>
+    </div>
 
     <div class="divider"></div>
 
@@ -128,6 +159,20 @@
 
     <p class="foot">© <span id="y"></span> Nonna Pasta — Fatto con amore 💙</p>
   </main>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script src="config.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function(){
+      var N = window.NONNA || {};
+      var s = document.getElementById('bSauce');
+      if (s && N.sauceDeLaSemaine) s.textContent = N.sauceDeLaSemaine;
+      var c = document.getElementById('bChips');
+      if (c && Array.isArray(N.sauces)) {
+        c.innerHTML = N.sauces.map(function(x){
+          return '<span class="week-chip">' + String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+        }).join('');
+      }
+    })();
+  </script>
 </body>
 </html>
