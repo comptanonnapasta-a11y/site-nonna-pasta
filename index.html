@@ -57,6 +57,14 @@
     text-decoration-thickness:1px;transition:color .2s}
   .lead a:hover{color:#f3e3be}
 
+  .hours{margin:24px auto 0;max-width:460px;padding:16px 22px;border-radius:16px;
+    background:rgba(245,239,224,.06);border:1px solid rgba(236,214,169,.28);text-align:center}
+  .hours-title{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:9px}
+  .hours-now{color:#fff;font-size:1.02rem}
+  .hours-now strong{color:var(--gold-soft)}
+  .hours-next,.hours-line{margin-top:9px;font-size:.88rem;color:rgba(245,239,224,.74);line-height:1.55}
+  .hours-next strong,.hours-line strong{color:rgba(245,239,224,.96)}
+
   .divider{width:60px;height:2px;background:var(--gold);margin:30px auto;border-radius:2px;opacity:.8}
 
   .week-card{margin:30px auto 0;max-width:520px;width:100%;background:#f5ecd6;
@@ -136,6 +144,12 @@
       <br />À très vite en salle ou en livraison !
     </p>
 
+    <div class="hours" id="hours">
+      <p class="hours-title">🕑 Nos horaires</p>
+      <p class="hours-now"><strong>Cet été</strong> — tous les jours&nbsp;: 11h – 18h</p>
+      <p class="hours-next">Reprise des horaires habituels le <strong>24 août</strong>&nbsp;:<br />Lun–Ven 10h30–21h · Sam 11h–21h · Dim 11h–18h</p>
+    </div>
+
     <div class="week-card">
       <div class="week-photo"><img src="assets/images/pates-semaine.jpg" alt="Pâtes fraîches à la sauce de la semaine" /></div>
       <div class="week-body">
@@ -192,6 +206,18 @@
         c.innerHTML = N.sauces.map(function(x){
           return '<span class="week-chip">' + String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
         }).join('');
+      }
+
+      // Horaires : bascule automatique sur les horaires habituels a partir du 24 aout 2026
+      var hoursEl = document.getElementById('hours');
+      if (hoursEl) {
+        var reprise = new Date(2026, 7, 24); // 24 aout 2026 (mois 0-indexe : 7 = aout)
+        if (new Date() >= reprise) {
+          hoursEl.innerHTML =
+            '<p class="hours-title">🕑 Nos horaires</p>' +
+            '<p class="hours-now">Lun–Ven&nbsp;: <strong>10h30 – 21h</strong></p>' +
+            '<p class="hours-line">Samedi&nbsp;: 11h – 21h · Dimanche&nbsp;: 11h – 18h</p>';
+        }
       }
 
       // Bandeau photos defilant (plats, hors boissons) genere depuis le menu
