@@ -123,14 +123,16 @@
 
   .gallery-strip{width:100vw;margin-left:calc(50% - 50vw);margin-top:36px}
   .strip-label{text-align:center;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.72);margin-bottom:16px}
-  .strip-viewport{overflow:hidden;
+  .strip-viewport{overflow:hidden;padding:26px 0;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
   .strip-track{display:flex;width:max-content;padding:4px 0;animation:stripScroll 40s linear infinite}
-  .strip-track:hover{animation-play-state:paused}
-  .strip-item{flex:0 0 auto;width:200px;margin:0 16px 0 0}
+  .strip-track:hover,.strip-track.paused{animation-play-state:paused}
+  .strip-item{flex:0 0 auto;width:200px;margin:0 16px 0 0;transition:transform .3s ease}
+  .strip-item:hover,.strip-item.zoom{transform:scale(1.22);z-index:3}
+  .strip-item:hover img,.strip-item.zoom img{box-shadow:0 20px 42px rgba(0,0,0,.55)}
   .strip-item img{width:200px;height:150px;object-fit:cover;border-radius:16px;display:block;
-    box-shadow:0 10px 24px rgba(0,0,0,.34)}
+    box-shadow:0 10px 24px rgba(0,0,0,.34);transition:box-shadow .3s ease}
   .strip-item figcaption{margin-top:9px;font-size:.82rem;color:rgba(245,239,224,.85);text-align:center;line-height:1.3;padding:0 4px}
   @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
@@ -273,6 +275,21 @@
         track.innerHTML = html + html; // duplique pour une boucle continue
         var half = track.scrollWidth / 2;
         if (half > 0) track.style.animationDuration = Math.max(22, Math.round(half / 55)) + 's';
+
+        // Tactile : appui du doigt = agrandit la photo + met en pause ; relache = revient + repart
+        track.addEventListener('touchstart', function (e) {
+          var item = e.target.closest ? e.target.closest('.strip-item') : null;
+          if (!item) return;
+          item.classList.add('zoom');
+          track.classList.add('paused');
+        }, { passive: true });
+        var stripRelease = function () {
+          var zoomed = track.querySelectorAll('.strip-item.zoom');
+          for (var i = 0; i < zoomed.length; i++) zoomed[i].classList.remove('zoom');
+          track.classList.remove('paused');
+        };
+        track.addEventListener('touchend', stripRelease);
+        track.addEventListener('touchcancel', stripRelease);
       }
     })();
   </script>
