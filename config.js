@@ -170,3 +170,23 @@ window.NONNA = {
   ]
 
 };
+
+/* ============================================================================
+   CHANGEMENT DE SAUCES PROGRAMMÉ  (automatique — rien à faire)
+   ----------------------------------------------------------------------------
+   Le LUNDI 10 AOÛT 2026 à 9h00 (heure de Paris), les sauces basculent
+   automatiquement sur celles ci-dessous — sur le site public ET la page
+   complète. Une fois cette date passée, ce sont ces sauces qui s'affichent.
+   Pour les changer de nouveau plus tard : modifiez ces valeurs (ou demandez-moi
+   de retirer ce bloc pour repartir sur une édition simple).
+   ============================================================================ */
+if (Date.now() >= Date.UTC(2026, 7, 10, 7, 0, 0)) { // 07:00 UTC = 09:00 Paris (heure d'été)
+  window.NONNA.sauceDeLaSemaine = "Crème de Saumon";
+  window.NONNA.sauces = [
+    "Crème de truffe & Parmesan",
+    "Crème de Saumon",
+    "Pesto & Grana",
+    "Crème de poireaux",
+    "Poulet Rosso"
+  ];
+}
