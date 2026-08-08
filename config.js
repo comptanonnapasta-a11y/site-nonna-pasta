@@ -86,7 +86,7 @@ window.NONNA = {
     {
       categorie: "pates",
       image: "lasagne.jpg",
-      badge: "",
+      badge: "Signature",
       nom: "Lasagnes de la Nonna",
       description: "Généreuses, gratinées au parmesan, servies avec une salade de roquette."
     },
