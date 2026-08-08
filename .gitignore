@@ -1,0 +1,16 @@
+# Fichiers système (Windows / macOS)
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Fichiers temporaires
+*.tmp
+*~
+
+# Réglages locaux de l'outil Claude Code (spécifiques à cet ordinateur)
+.claude/
+
+# Dossier d'anciennes photos de travail, non utilisées par le site
+# (le site utilise assets/images/). Décommentez pour l'inclure au dépôt.
+/images/

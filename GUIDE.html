@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guide — Mettre à jour le site Nonna Pasta</title>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    max-width:820px;margin:0 auto;padding:40px 24px 80px;color:#1b2540;line-height:1.7;background:#fbf8f0}
+  h1{font-family:Georgia,serif;color:#142a52;font-size:2rem;margin-bottom:4px}
+  .sub{color:#c99a4e;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;margin-bottom:32px}
+  h2{font-family:Georgia,serif;color:#142a52;margin-top:40px;border-bottom:2px solid #efe6d2;padding-bottom:8px}
+  code{background:#142a52;color:#f5efe0;padding:2px 8px;border-radius:6px;font-size:.9em}
+  .file{background:#fff;border:1px solid #efe6d2;border-left:4px solid #c99a4e;border-radius:8px;padding:16px 20px;margin:16px 0}
+  .step{background:#fff;border:1px solid #efe6d2;border-radius:10px;padding:18px 22px;margin:14px 0}
+  .step b{color:#142a52}
+  .tip{background:#eef3fb;border-radius:10px;padding:14px 20px;margin:16px 0;font-size:.95rem}
+  .warn{background:#fbeeee;border-radius:10px;padding:14px 20px;margin:16px 0;font-size:.95rem}
+  pre{background:#0e1f3d;color:#f5efe0;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+  ol{padding-left:22px}
+</style>
+</head>
+<body>
+  <h1>Guide de mise à jour</h1>
+  <div class="sub">Site Nonna Pasta · simple, sans connaissances techniques</div>
+
+  <p>Bonne nouvelle : pour le quotidien, <b>vous ne modifiez qu'un seul fichier</b> :
+  <code>config.js</code>. Ouvrez-le avec le <b>Bloc-notes</b> (clic droit → Ouvrir avec →
+  Bloc-notes). Changez uniquement le texte <b>entre les guillemets</b> <code>"  "</code>,
+  enregistrez, puis rechargez la page (touche <b>F5</b>).</p>
+
+  <div class="warn">⚠️ Ne supprimez jamais les guillemets <code>"</code>, les virgules <code>,</code>,
+  les crochets <code>[ ]</code> ni les accolades <code>{ }</code>. Ils font tenir la page ensemble.</div>
+
+  <h2>1. Changer la sauce de la semaine</h2>
+  <div class="step">
+    Dans <code>config.js</code>, tout en haut, trouvez la ligne :
+    <pre>sauceDeLaSemaine: "Crème de truffe &amp; parmesan",</pre>
+    Remplacez le texte entre guillemets par la sauce du moment. Exemple :
+    <pre>sauceDeLaSemaine: "Pesto maison &amp; pignons",</pre>
+    Enregistrez, rechargez la page : le titre de la section « Sauce de la semaine » est à jour. ✅
+  </div>
+  <div class="tip">💡 Les petits boutons de sauces se règlent juste en dessous, dans la liste
+  <code>sauces: [ ... ]</code>. Ajoutez ou retirez des noms, chacun entre guillemets et séparé par une virgule.</div>
+
+  <h2>2. Changer une photo du menu</h2>
+  <div class="step">
+    <b>La méthode la plus simple (recommandée) :</b>
+    <ol>
+      <li>Ouvrez le dossier <code>assets/images/</code>.</li>
+      <li>Repérez la photo à remplacer, par exemple <code>pizza.jpg</code>.</li>
+      <li>Renommez votre nouvelle photo avec <b>exactement le même nom</b> (<code>pizza.jpg</code>)
+          et déposez-la dans le dossier en écrasant l'ancienne.</li>
+      <li>Rechargez la page. La nouvelle photo apparaît. ✅</li>
+    </ol>
+  </div>
+  <div class="tip">💡 Idéalement, utilisez une photo au format paysage (plus large que haute) pour un joli rendu.
+  Les grandes photos sont automatiquement redimensionnées à l'affichage.</div>
+
+  <h2>3. Changer le nom, la description ou la catégorie d'un plat</h2>
+  <div class="step">
+    Dans <code>config.js</code>, section <code>menu</code>, chaque plat est un bloc comme celui-ci :
+    <pre>{
+  categorie: "pizza",
+  image: "pizza.jpg",
+  badge: "",
+  nom: "Pizza dinde &amp; champignons",
+  description: "Pâte fine, mozzarella, dinde, champignons frais et roquette."
+},</pre>
+    Modifiez le texte entre guillemets. <b>badge</b> = petite étiquette (ex. <code>"Signature"</code>) ;
+    laissez <code>""</code> si vous n'en voulez pas. <b>categorie</b> doit être l'un de :
+    <code>"pates"</code>, <code>"salades"</code>, <code>"pizza"</code>, <code>"desserts"</code>, <code>"boissons"</code>.
+  </div>
+
+  <h2>4. Ajouter ou retirer un plat</h2>
+  <div class="step">
+    <b>Ajouter :</b> copiez un bloc <code>{ ... }</code> entier (avec sa virgule), collez-le juste après,
+    puis changez son contenu et le nom de sa photo.<br /><br />
+    <b>Retirer :</b> supprimez le bloc <code>{ ... }</code> du plat concerné (et la virgule qui le suit).
+  </div>
+
+  <h2>Besoin d'aide ?</h2>
+  <p>En cas de doute, faites d'abord une copie de <code>config.js</code> (copier-coller le fichier)
+  avant de le modifier : si quelque chose ne s'affiche plus, vous pourrez revenir à la version qui marchait.
+  Vous pouvez aussi me redemander une modification à tout moment.</p>
+</body>
+</html>
