@@ -276,20 +276,32 @@
         var half = track.scrollWidth / 2;
         if (half > 0) track.style.animationDuration = Math.max(22, Math.round(half / 55)) + 's';
 
-        // Tactile : appui du doigt = agrandit la photo + met en pause ; relache = revient + repart
-        track.addEventListener('touchstart', function (e) {
-          var item = e.target.closest ? e.target.closest('.strip-item') : null;
-          if (!item) return;
+        // Zoom fiable au survol (souris) ET a l'appui (doigt), avec pause du defilement.
+        // On ecoute sur le conteneur fixe (.strip-viewport) et non sur le ruban en mouvement.
+        var vp = document.querySelector('.strip-viewport');
+        function clearZoom() {
+          var z = track.querySelectorAll('.strip-item.zoom');
+          for (var i = 0; i < z.length; i++) z[i].classList.remove('zoom');
+        }
+        function zoomAt(target) {
+          track.classList.add('paused'); // fige le defilement
+          var item = target && target.closest ? target.closest('.strip-item') : null;
+          if (!item || item.classList.contains('zoom')) return;
+          clearZoom();
           item.classList.add('zoom');
-          track.classList.add('paused');
-        }, { passive: true });
-        var stripRelease = function () {
-          var zoomed = track.querySelectorAll('.strip-item.zoom');
-          for (var i = 0; i < zoomed.length; i++) zoomed[i].classList.remove('zoom');
-          track.classList.remove('paused');
-        };
-        track.addEventListener('touchend', stripRelease);
-        track.addEventListener('touchcancel', stripRelease);
+        }
+        function releaseZoom() {
+          clearZoom();
+          track.classList.remove('paused'); // relance le defilement
+        }
+        if (vp) {
+          vp.addEventListener('pointerenter', function () { track.classList.add('paused'); });
+          vp.addEventListener('pointermove', function (e) { zoomAt(e.target); });
+          vp.addEventListener('pointerdown', function (e) { zoomAt(e.target); });
+          vp.addEventListener('pointerleave', releaseZoom);
+          vp.addEventListener('pointerup', releaseZoom);
+          vp.addEventListener('pointercancel', releaseZoom);
+        }
       }
     })();
   </script>
