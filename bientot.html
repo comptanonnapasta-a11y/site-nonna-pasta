@@ -74,6 +74,20 @@
     border:1px solid rgba(0,47,92,.30);padding:6px 14px;border-radius:999px}
   .week-note{margin-top:16px;font-size:.82rem;color:#5a6a80}
 
+  .gallery-strip{width:100vw;margin-left:calc(50% - 50vw);margin-top:36px}
+  .strip-label{text-align:center;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.72);margin-bottom:16px}
+  .strip-viewport{overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .strip-track{display:flex;width:max-content;padding:4px 0;animation:stripScroll 40s linear infinite}
+  .strip-track:hover{animation-play-state:paused}
+  .strip-item{flex:0 0 auto;width:200px;margin:0 16px 0 0}
+  .strip-item img{width:200px;height:150px;object-fit:cover;border-radius:16px;display:block;
+    box-shadow:0 10px 24px rgba(0,0,0,.34)}
+  .strip-item figcaption{margin-top:9px;font-size:.82rem;color:rgba(245,239,224,.85);text-align:center;line-height:1.3;padding:0 4px}
+  @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
   .order-label{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7);margin-bottom:14px}
   .social-label{margin-top:32px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,224,.7)}
   .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
@@ -139,6 +153,13 @@
       </div>
     </div>
 
+    <section class="gallery-strip" aria-label="Aperçu de nos plats">
+      <p class="strip-label">Un aperçu de nos spécialités</p>
+      <div class="strip-viewport">
+        <div class="strip-track" id="stripTrack"></div>
+      </div>
+    </section>
+
     <div class="divider"></div>
 
     <p class="order-label">En attendant, commandez en livraison</p>
@@ -171,6 +192,22 @@
         c.innerHTML = N.sauces.map(function(x){
           return '<span class="week-chip">' + String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
         }).join('');
+      }
+
+      // Bandeau photos defilant (plats, hors boissons) genere depuis le menu
+      function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+      var track = document.getElementById('stripTrack');
+      if (track && Array.isArray(N.menu)) {
+        var plats = N.menu.filter(function(d){
+          return d.categorie !== 'boissons' && String(d.image).indexOf('pates-semaine') === -1;
+        });
+        var html = plats.map(function(d){
+          return '<figure class="strip-item"><img src="assets/images/' + esc(d.image) +
+                 '" alt="' + esc(d.nom) + '"><figcaption>' + esc(d.nom) + '</figcaption></figure>';
+        }).join('');
+        track.innerHTML = html + html; // duplique pour une boucle continue
+        var half = track.scrollWidth / 2;
+        if (half > 0) track.style.animationDuration = Math.max(22, Math.round(half / 55)) + 's';
       }
     })();
   </script>
