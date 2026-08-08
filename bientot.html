@@ -66,6 +66,13 @@
   .contact a:hover{border-color:var(--gold-soft)}
   .contact span{display:inline-flex;align-items:center;gap:8px}
 
+  .review-cta{display:inline-flex;align-items:center;gap:11px;margin:26px auto 0;
+    padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:600;font-size:1rem;
+    color:var(--navy-deep);background:var(--gold-soft);
+    box-shadow:0 12px 28px rgba(0,0,0,.28);transition:transform .25s,box-shadow .25s,background .25s}
+  .review-cta:hover{transform:translateY(-2px);background:#f3e3be;box-shadow:0 16px 34px rgba(0,0,0,.34)}
+  .review-cta .stars{letter-spacing:2px;font-size:.95rem;color:#c99a3c}
+
   .foot{margin-top:30px;font-size:.78rem;color:rgba(245,239,224,.5)}
   @media (max-width:480px){.btn{flex:1 1 100%}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -95,11 +102,13 @@
 
     <div class="contact">
       <span>📍 <a href="https://www.google.com/maps/dir/?api=1&amp;destination=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">37 rue de Ponthieu, 75008 Paris</a></span>
-      <!-- LIEN AVIS GOOGLE : remplacez l'adresse ci-dessous par votre lien d'avis
-           (Profil d'établissement Google -> "Demandez des avis" -> copier le lien, du type https://g.page/r/XXXX/review) -->
-      <span>⭐ <a href="https://g.page/r/CQjq_r3sA9J5EBM/review" target="_blank" rel="noopener">Laissez-nous un avis</a></span>
       <span>📸 <a href="https://www.instagram.com/nonnapastafr/" target="_blank" rel="noopener">@nonnapastafr</a></span>
     </div>
+
+    <!-- Appel à l'avis Google : modifiez la phrase et/ou le lien ici si besoin -->
+    <a class="review-cta" href="https://g.page/r/CQjq_r3sA9J5EBM/review" target="_blank" rel="noopener">
+      <span class="stars">★★★★★</span> Vous vous êtes régalé ? Notez-nous sur Google
+    </a>
 
     <p class="foot">© <span id="y"></span> Nonna Pasta — Fatto con amore 💙</p>
   </main>
