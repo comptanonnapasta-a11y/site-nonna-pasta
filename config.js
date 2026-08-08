@@ -21,9 +21,9 @@ window.NONNA = {
   sauces: [
     "Crème de truffe",
     "Carbonara",
-    "Pesto di casa",
+    "Pesto & Grana",
     "Siciliana",
-    "Arrabbiata"
+    "Poulet Curry & Courgettes"
   ],
 
   /* ==========================================================================
