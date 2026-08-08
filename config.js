@@ -141,7 +141,7 @@ window.NONNA = {
     },
     {
       categorie: "desserts",
-      image: "salade-fruits.jpg",
+      image: "salade-fruits.jpg?v=2",
       badge: "",
       nom: "Salade de fruits frais",
       description: "Fruits de saison taillés à la main et pointe de menthe."
@@ -162,7 +162,7 @@ window.NONNA = {
     },
     {
       categorie: "boissons",
-      image: "boisson-lipton.jpg",
+      image: "boisson-lipton.jpg?v=2",
       badge: "",
       nom: "Ice Tea framboise",
       description: "Thé glacé rafraîchissant, saveur framboise."
