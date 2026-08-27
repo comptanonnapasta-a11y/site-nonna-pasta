@@ -347,7 +347,7 @@
 
     <p class="menu-note reveal">
       🍴 Photos non contractuelles — la carte complète et les prix sont disponibles en salle
-      et sur nos plateformes de livraison.
+      et sur nos plateformes de livraison. Informations sur les allergènes disponibles en restaurant.
     </p>
   </div>
 </section>
@@ -459,12 +459,25 @@
       </div>
     </div>
 
-    <div class="infos-map reveal">
-      <iframe
-        title="Carte — Nonna Pasta, 37 rue de Ponthieu, 75008 Paris"
-        src="https://maps.google.com/maps?q=37%20rue%20de%20Ponthieu%2075008%20Paris&t=&z=16&ie=UTF8&iwloc=&output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="infos-map reveal" id="mapBox">
+      <div class="map-consent">
+        <p class="map-consent-txt">🗺️ La carte est fournie par <strong>Google&nbsp;Maps</strong>.<br />En l'affichant, vous acceptez le dépôt éventuel de cookies par Google.</p>
+        <button type="button" class="btn btn-navy" id="loadMap">Afficher la carte</button>
+        <p class="map-consent-alt"><a href="https://www.google.com/maps/search/?api=1&amp;query=37%20rue%20de%20Ponthieu%2C%2075008%20Paris" target="_blank" rel="noopener">Ou ouvrir directement dans Google Maps ↗</a></p>
+      </div>
     </div>
+    <script>
+      (function () {
+        var b = document.getElementById('loadMap');
+        if (!b) return;
+        b.addEventListener('click', function () {
+          document.getElementById('mapBox').innerHTML =
+            '<iframe title="Carte — Nonna Pasta, 37 rue de Ponthieu, 75008 Paris" ' +
+            'src="https://maps.google.com/maps?q=37%20rue%20de%20Ponthieu%2075008%20Paris&t=&z=16&ie=UTF8&iwloc=&output=embed" ' +
+            'loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+        });
+      })();
+    </script>
   </div>
 </section>
 
@@ -491,6 +504,7 @@
   </div>
   <div class="container footer-bottom">
     <p>© <span id="year"></span> Nonna Pasta · Paris 8ᵉ — Fatto con amore 💙</p>
+    <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
     <p class="footer-cred">Cuisine généreuse · Pâtes à la minute · Sauces changées chaque semaine</p>
   </div>
 </footer>
