@@ -19,11 +19,11 @@ window.NONNA = {
      Vous pouvez en ajouter / retirer / renommer.
      Séparez chaque sauce par une virgule, chacune entre guillemets. */
   sauces: [
+    "Arrabiata",
+    "Crème de Truffe",
     "Crème de Saumon",
-    "Crème de truffe",
-    "Pesto & Grana",
-    "Poulet Rosso",
-    "Champignons Lardons"
+    "Bœuf & Poivre",
+    "Pesto Grana Padano"
   ],
 
   /* ==========================================================================
