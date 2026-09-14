@@ -13,16 +13,16 @@ window.NONNA = {
      1) LA SAUCE DE LA SEMAINE  (à changer chaque semaine)
      Écrivez simplement le nom de la sauce du moment entre les guillemets.
      ========================================================================== */
-  sauceDeLaSemaine: "Bœuf & Poivre",
+  sauceDeLaSemaine: "Gorgonzola",
 
   /* Les petits boutons "nos sauces" affichés sous le texte.
      Vous pouvez en ajouter / retirer / renommer.
      Séparez chaque sauce par une virgule, chacune entre guillemets. */
   sauces: [
-    "Arrabiata",
+    "Gorgonzola",
     "Crème de Truffe",
-    "Crème de Saumon",
-    "Bœuf & Poivre",
+    "Tomate Basilic",
+    "Petit Pois Lardons",
     "Pesto Grana Padano"
   ],
 
